@@ -1,0 +1,20 @@
+# Default settings for ai-texture-material-generator.
+# Copy to user.yaml to override without touching the tracked defaults.
+
+model:
+  backend: auto          # auto | cuda | cpu | onnx
+  weights_dir: models
+  safety_checker: false
+  tile_size: 512
+  steps: 28
+  guidance: 6.5
+
+export:
+  default_format: png
+  bit_depth: 8
+  srgb_albedo: true
+  normal_convention: opengl
+
+output_dir: output
+log_level: INFO
+threads: 0
