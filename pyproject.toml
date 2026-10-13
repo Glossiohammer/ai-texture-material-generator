@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-texture-material-generator"
+version = "0.4.2"
+description = "AI-driven PBR texture and material generator for Windows desktop"
+readme = "CONTRIBUTING.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "ai-texture-material-generator contributors" }]
+keywords = ["texture", "pbr", "material", "diffusion", "normal-map", "tiling", "gamedev"]
+
+dependencies = [
+    "numpy>=1.26,<3",
+    "pillow>=10.3",
+    "pydantic>=2.7,<3",
+    "PySide6>=6.7",
+    "typer>=0.12",
+    "rich>=13.7",
+    "pyyaml>=6.0",
+    "httpx>=0.27",
+    "safetensors>=0.4.3",
+    "onnxruntime>=1.18; platform_system=='Windows'",
+]
+
+[project.optional-dependencies]
+cuda = ["torch>=2.3", "torchvision>=0.18"]
+dev = [
+    "pytest>=8.2",
+    "pytest-qt>=4.4",
+    "mypy>=1.10",
+    "ruff>=0.5",
+    "hypothesis>=6.100",
+]
+
+[project.scripts]
+aitmg = "ai_texture_material_generator.bootstrap.cli:main"
+aitmg-gui = "ai_texture_material_generator.bootstrap.app:main"
+
+[tool.setuptools.packages.find]
+include = ["ai_texture_material_generator*"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["ai_texture_material_generator/core", "ai_texture_material_generator/services"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
