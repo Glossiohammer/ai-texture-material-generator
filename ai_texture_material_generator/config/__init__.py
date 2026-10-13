@@ -1,0 +1,1 @@
+"""Configuration: settings model, presets, path resolution."""
