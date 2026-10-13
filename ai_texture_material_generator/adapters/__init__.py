@@ -1,0 +1,1 @@
+"""Platform + backend adapters: CUDA, CPU, ONNX, filesystem."""
