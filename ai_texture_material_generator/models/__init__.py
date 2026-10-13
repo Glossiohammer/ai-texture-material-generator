@@ -1,0 +1,1 @@
+"""Domain data models shared across handlers, services, and adapters."""
